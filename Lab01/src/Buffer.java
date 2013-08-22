@@ -7,7 +7,7 @@ public class Buffer {
 	public synchronized void escrever(int value) {
 		// enquanto não houver posições vazias, coloca a thread em estado de
 		// espera
-		while (occupied) {
+		while (buffer == 0) {
 			// envia informações de thread e de buffer para a saída, então
 			// espera
 			try {
@@ -23,7 +23,6 @@ public class Buffer {
 
 		// indica que a produtora não pode armazenar outro valor
 		// até a consumidora recuperar valor atual de buffer
-		occupied = true;
 
 		notify(); // instrui a thread em espera a entrar no estado executável
 	} // fim do método set; libera bloqueio em SynchronizedBuffer
@@ -31,7 +30,7 @@ public class Buffer {
 	// retorna valor do buffer
 	public synchronized int ler() {
 		// enquanto os dados não são lidos, coloca thread em estado de espera
-		while (!occupied) {
+		while (buffer != 0) {
 			// envia informações de thread e de buffer para a saída, então
 			// espera
 			try {
@@ -45,7 +44,6 @@ public class Buffer {
 
 		// indica que a produtora pode armazenar outro valor
 		// porque a consumidora acabou de recuperar o valor do buffer
-		occupied = false;
 
 		int readValue = buffer; // armazena valor em buffer
 		buffer = 0;
