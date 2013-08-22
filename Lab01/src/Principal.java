@@ -13,11 +13,14 @@ public class Principal {
 		
 		//Leitor
 		ExecutorService te  =  Executors.newFixedThreadPool(poolLeitores);
+		//Escritor
 		ScheduledExecutorService  ste = Executors.newScheduledThreadPool(poolEscritores);
+		//Buffer
+		Buffer buffer = new Buffer();
 		
-		ste.scheduleAtFixedRate(new Escritor("Escritor-scheduled-At-Fixed-Rate", 10, 10000, TimeUnit.NANOSECONDS);
-		
-
+		for(int i=0; i<120; i++) {
+			te.execute(new Leitor(buffer));
+			ste.scheduleAtFixedRate(new Escritor("Escritor-scheduled-At-Fixed-Rate",buffer), 10, 10000, TimeUnit.NANOSECONDS);
+		}
 	}
-
 }
