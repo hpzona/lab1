@@ -24,5 +24,6 @@ public class Principal {
 			step.scheduleAtFixedRate(new Escritor("Escritor-a cada 0,1ms",buffer), 10, 10000, TimeUnit.NANOSECONDS);
 			
 		}
+		
 	}
 }

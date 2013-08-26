@@ -12,8 +12,7 @@ public class Leitor implements Runnable {
 	         try 
 	         {
 	            Thread.sleep( 10 );
-	            System.out.printf("Leu");
-	            System.out.println(buffer.ler());
+	            System.out.println("Leitor leu o valor: " + buffer.ler());
 	         } // fim do try
 	         // se a thread adormecida é interrompida, imprime rastreamento de pilha 
 	         catch ( InterruptedException exception ) 
