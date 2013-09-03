@@ -12,7 +12,7 @@ public class Leitor implements Runnable {
 	         try 
 	         {
 	            Thread.sleep( 10 );
-	            System.out.println("Leitor leu o valor: " + buffer.ler());
+	            buffer.ler();
 	         } 
 	         catch ( InterruptedException exception ) 
 	         {

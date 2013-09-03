@@ -21,7 +21,7 @@ public class Buffer {
 		notifyAll(); 
 	} 
 
-	public synchronized int ler() {
+	public synchronized void ler() {
 		while (buffer == 4) {
 
 			try {
@@ -33,7 +33,7 @@ public class Buffer {
 		}
 		buffer++;
 		notifyAll();
-		return valor;
+		System.out.println("Leitor " + Thread.currentThread().getId() + " leu o valor: " + valor);
 	} 
 	public int getValor() {
 		return valor;
